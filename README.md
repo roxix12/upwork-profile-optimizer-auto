@@ -35,8 +35,8 @@
 1. Clone this repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/roxix12/upwork-profile-optimizer-auto.git
+cd upwork-profile-optimizer-auto
 ```
 
 2. Open Chrome → `chrome://extensions`
