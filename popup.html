@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      width: 410px;
+      margin: 0;
+      padding: 14px;
+      background: #f3f4f2;
+      color: #1d1d1d;
+    }
+    h1 { font-size: 16px; margin: 0 0 4px; color: #14a800; }
+    .sub { font-size: 11px; color: #666; margin-bottom: 12px; line-height: 1.35; }
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .card h2 { font-size: 13px; margin: 0 0 8px; color: #14a800; }
+    textarea, input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 6px;
+      font-size: 12px;
+      font-family: inherit;
+      margin-bottom: 8px;
+    }
+    #token { height: 48px; font-size: 11px; }
+    #extraNotes { height: 40px; }
+    #resultBox { height: 150px; font-size: 11px; white-space: pre-wrap; }
+    button {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    .primary { background: #14a800; color: #fff; }
+    .primary:hover:not(:disabled) { background: #108a00; }
+    .secondary { background: #eef6eb; color: #14a800; border: 1px solid #c5e0c0; }
+    .accent { background: #1f57c3; color: #fff; }
+    .accent:hover:not(:disabled) { background: #1748a3; }
+    .warn { background: #6b4ce6; color: #fff; }
+    .hint { font-size: 11px; color: #666; line-height: 1.4; }
+    .status { font-size: 12px; font-weight: 600; margin-bottom: 8px; min-height: 16px; }
+    .ok { color: #14a800; }
+    .err { color: #b24020; }
+    .row { display: flex; gap: 6px; }
+    .row button { flex: 1; }
+    .score {
+      display: none;
+      background: #eef6eb;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #0d5c00;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upwork Profile Optimisation</h1>
+  <div class="sub">Theme bug fix · custom sections · custom themes · top-10 research · skills replace</div>
+
+  <div class="card">
+    <h2>1. AI Token</h2>
+    <textarea id="token" placeholder='Public GPT access_token or full JSON'></textarea>
+    <div class="row">
+      <button type="button" id="testAi" class="secondary">Test AI</button>
+      <button type="button" id="saveToken" class="secondary">Save</button>
+    </div>
+    <div id="aiStatus" class="hint"></div>
+  </div>
+
+  <div class="card">
+    <h2>2. Research + Optimize</h2>
+    <textarea id="extraNotes" placeholder="Notes: theme bug fixes, custom sections, OS 2.0, Liquid…"></textarea>
+    <button type="button" id="researchBtn" class="warn">1) Deep Research: open Top 10 profiles</button>
+    <button type="button" id="fullAutoBtn" class="accent">2) My profile → AI Optimize (with research)</button>
+    <button type="button" id="scrapeBtn" class="secondary">Fetch my profile DOM only</button>
+    <div id="runStatus" class="status"></div>
+    <div id="scoreBox" class="score"></div>
+    <div class="hint">
+      Deep Research: talent search → har top profile <b>ek-ek open</b> → title/overview/skills scrape (~2–4 min).
+      Popup band kar sakte ho; extension icon pe badge <b>1/10</b> progress dikhega.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. Result &amp; Apply</h2>
+    <textarea id="resultBox" readonly placeholder="Titles, overview, skills…"></textarea>
+    <div class="row">
+      <button type="button" id="copyBtn" class="secondary">Copy all</button>
+      <button type="button" id="copyOverview" class="secondary">Copy overview</button>
+    </div>
+    <button type="button" id="applyBtn" class="primary">Apply Title + Overview</button>
+    <div class="row">
+      <button type="button" id="applyTitleBtn" class="secondary">Title only</button>
+      <button type="button" id="applyOverviewBtn" class="secondary">Overview only</button>
+    </div>
+    <button type="button" id="applySkillsBtn" class="warn">Apply Skills (remove old → search add new)</button>
+    <div class="hint">
+      Skills: pehle profile pe Skills Edit pencil kholo (modal open), phir <b>Apply Skills</b>. Purani remove → search → ek-ek add → Save.
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Upwork Profile Optimisation",
+  "description": "AI Upwork optimizer for Shopify theme developers: bug fixes, custom sections, custom themes. Scrapes DOM, rewrites title/overview/skills, applies edits.",
+  "version": "1.5.0",
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "https://www.upwork.com/*",
+    "https://upwork.com/*",
+    "https://publicgpt.lovable.app/*",
+    "https://iwrzhcjtaidmgnnduhus.supabase.co/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Upwork Profile Optimisation"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.upwork.com/*",
+        "https://upwork.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
